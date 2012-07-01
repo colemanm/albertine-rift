@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Albertine Rift | Africa's Great Rift Valley | Coleman McCormick</title>
+  <meta name="description" content="maps from @colemanm"/>
+  <meta charset="utf-8">  
+
+  <link rel="shortcut icon" href="images/favicon.ico"/>
+  
+  <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+  
+  <script src='js/wax/ext/modestmaps.min.js' type='text/javascript'></script>
+  <script src='js/wax/dist/wax.mm.js' type='text/javascript'></script>
+  <link href='js/wax/theme/controls.css' rel='stylesheet' type='text/css' />
+  <script src='js/easey.js' type='text/javascript'></script>
+
+  <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen, projection" />
+
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32705988-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+  </script>
+  <script type="text/javascript">
+
+  var mm = com.modestmaps;
+
+  wax.tilejson('http://a.tiles.mapbox.com/v3/colemanm.albertine-rift.jsonp',
+    function(tilejson) {
+      var m = new mm.Map('map',
+        new wax.mm.connector(tilejson));
+        m.setCenterZoom(new mm.Location(-3, 27), 7);
+        wax.mm.zoomer(m).appendTo(m.parent);
+    })
+
+  </script>
+
+</head>
+  
+<body>
+
+  <div id="container">
+    <div id="map"></div>
+    <div class="sidebar">
+      <h1>The Albertine Rift</h1>
+      <div class="about">
+        <h2>Sources</h2>
+        <p>Streets and places from <a href="http://openstreetmap.org">OpenStreetMap</a>.</p>
+        <p>The hillshading and color relief were generated from <a href="http://www2.jpl.nasa.gov/srtm/">SRTM</a> data as two separate layers, using <code>gdaldem</code>.</p>
+      </div>
+    </div>
+
+    
+
+  </div>
+
+</body>
+</html>
