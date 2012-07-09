@@ -76,4 +76,8 @@ table.places td {
 	font-size: 0.8em;
 }
 
+.fb-like, .tweet {
+	display: inline;
+}
+
 .hide { display: none; }
