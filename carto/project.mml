@@ -1,0 +1,514 @@
+{
+  "bounds": [
+    19.6765,
+    -11.8136,
+    37.4744,
+    5.4301
+  ],
+  "center": [
+    28.949,
+    -2.4492,
+    6
+  ],
+  "format": "png",
+  "interactivity": false,
+  "minzoom": 6,
+  "maxzoom": 9,
+  "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+  "Stylesheet": [
+    "style.mss",
+    "roads.mss",
+    "label.mss",
+    "palette.mss"
+  ],
+  "Layer": [
+    {
+      "id": "countries",
+      "name": "countries",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "geometry": "polygon",
+      "Datasource": {
+        "file": "http://mapbox-geodata.s3.amazonaws.com/natural-earth-1.4.0/cultural/10m-admin-0-countries.zip",
+        "type": "shape",
+        "id": "countries",
+        "project": "albertine-rift",
+        "srs": null
+      }
+    },
+    {
+      "geometry": "raster",
+      "name": "color-relief",
+      "id": "color-relief",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "class": "",
+      "Datasource": {
+        "file": "/Users/coleman/data/srtm/africa_color.tif"
+      },
+      "srs-name": "WGS84"
+    },
+    {
+      "geometry": "raster",
+      "name": "hillshade",
+      "id": "hillshade",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "class": "",
+      "Datasource": {
+        "file": "/Users/coleman/data/srtm/lower-africa-hillshade-4326.tif"
+      }
+    },
+    {
+      "geometry": "polygon",
+      "name": "urban",
+      "id": "urban",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "class": "",
+      "Datasource": {
+        "file": "/Users/coleman/data/naturalearth/10m_cultural/ne_10m_urban_areas.shp"
+      }
+    },
+    {
+      "geometry": "linestring",
+      "name": "streams",
+      "id": "streams",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select *\nfrom osm_waterways\nwhere type in ('river')\n) as waterway",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "osm-africa",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "id": "streams",
+        "project": "albertine-rift",
+        "srs": null
+      }
+    },
+    {
+      "geometry": "multilinestring",
+      "name": "rivers",
+      "id": "rivers",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "class": "",
+      "Datasource": {
+        "file": "/Users/coleman/data/naturalearth/10m_physical/ne_10m_rivers_lake_centerlines.shp",
+        "id": "rivers",
+        "project": "albertine-rift",
+        "srs": null
+      }
+    },
+    {
+      "geometry": "polygon",
+      "id": "river_patch",
+      "class": "",
+      "Datasource": {
+        "file": "/Users/coleman/data/experimental/rift_valley/river_patch.shp"
+      },
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "name": "river_patch"
+    },
+    {
+      "geometry": "polygon",
+      "name": "water",
+      "id": "water",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "osm_waterareas",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "dbname": "osm-africa",
+        "id": "water",
+        "project": "albertine-rift",
+        "srs": null
+      }
+    },
+    {
+      "geometry": "linestring",
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select *\nfrom osm_waterways\nwhere type in ('river')\n) as waterway",
+        "extent": "",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "dbname": "osm-africa"
+      },
+      "id": "river_label",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "name": "river_label"
+    },
+    {
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select *\nfrom osm_waterareas\nwhere type = 'water'\n) as lake_overlay",
+        "extent": "",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "dbname": "osm-africa"
+      },
+      "id": "lake_overlay_fill",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "name": "lake_overlay_fill"
+    },
+    {
+      "geometry": "polygon",
+      "name": "lakes",
+      "id": "lakes",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "class": "",
+      "Datasource": {
+        "file": "/Users/coleman/data/naturalearth/10m_physical/ne_10m_lakes.shp",
+        "id": "lakes",
+        "project": "albertine-rift",
+        "srs": null
+      }
+    },
+    {
+      "geometry": "linestring",
+      "name": "motorway_line",
+      "id": "motorway_line",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "osm_motorways",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "dbname": "osm-africa"
+      }
+    },
+    {
+      "geometry": "linestring",
+      "name": "mainroad_line",
+      "id": "mainroad_line",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "osm_mainroads",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "dbname": "osm-africa"
+      }
+    },
+    {
+      "geometry": "linestring",
+      "name": "faults",
+      "id": "faults",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "class": "",
+      "Datasource": {
+        "table": "faults",
+        "key_field": "",
+        "geometry_field": "the_geom",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "experiments",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres"
+      }
+    },
+    {
+      "geometry": "polygon",
+      "name": "regions",
+      "id": "regions",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "class": "",
+      "Datasource": {
+        "table": "region_polygons",
+        "key_field": "",
+        "geometry_field": "the_geom",
+        "extent": "",
+        "type": "postgis",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "dbname": "experiments",
+        "id": "regions",
+        "project": "albertine-rift",
+        "srs": null
+      }
+    },
+    {
+      "geometry": "polygon",
+      "id": "lake_fill",
+      "class": "",
+      "Datasource": {
+        "file": "/Users/coleman/data/naturalearth/10m_physical/ne_10m_lakes.shp"
+      },
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "name": "lake_fill"
+    },
+    {
+      "geometry": "polygon",
+      "id": "lake_victoria_fill",
+      "class": "",
+      "Datasource": {
+        "file": "/Users/coleman/data/experimental/rift_valley/lake_victoria.shp"
+      },
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "name": "lake_victoria_fill"
+    },
+    {
+      "geometry": "polygon",
+      "id": "lake_malawi_fill",
+      "class": "",
+      "Datasource": {
+        "file": "/Users/coleman/data/experimental/rift_valley/lake_malawi.shp",
+        "id": "lake_malawi_fill",
+        "project": "albertine-rift",
+        "srs": null
+      },
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "name": "lake_malawi_fill"
+    },
+    {
+      "geometry": "linestring",
+      "name": "borders",
+      "id": "borders",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "class": "",
+      "Datasource": {
+        "table": "lsib_global",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "hiu-lsib",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "id": "borders",
+        "project": "albertine-rift",
+        "srs": null
+      }
+    },
+    {
+      "geometry": "polygon",
+      "name": "lake_label",
+      "id": "lake_label",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "class": "",
+      "Datasource": {
+        "file": "/Users/coleman/data/naturalearth/10m_physical/ne_10m_lakes.shp",
+        "id": "lake_label",
+        "project": "albertine-rift",
+        "srs": null
+      }
+    },
+    {
+      "geometry": "point",
+      "name": "country_label",
+      "id": "country_label",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "file": "http://mapbox-geodata.s3.amazonaws.com/natural-earth-1.4.0/cultural/10m-admin-0-country-points.zip",
+        "id": "country_label",
+        "project": "albertine-rift",
+        "srs": null
+      }
+    },
+    {
+      "geometry": "point",
+      "name": "volcanoes",
+      "id": "volcanoes",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "class": "",
+      "Datasource": {
+        "table": "volcanoes",
+        "key_field": "",
+        "geometry_field": "the_geom",
+        "extent": "",
+        "type": "postgis",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "dbname": "experiments",
+        "id": "volcanoes",
+        "project": "albertine-rift",
+        "srs": null
+      },
+      "srs-name": "WGS84"
+    },
+    {
+      "geometry": "point",
+      "Datasource": {
+        "type": "postgis",
+        "table": "volcanoes",
+        "extent": "",
+        "key_field": "",
+        "geometry_field": "the_geom",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "dbname": "experiments"
+      },
+      "id": "volcano_label",
+      "class": "",
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "name": "volcano_label"
+    },
+    {
+      "geometry": "point",
+      "name": "places",
+      "id": "places",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "osm_places",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "dbname": "osm-africa",
+        "id": "places",
+        "project": "albertine-rift",
+        "srs": null
+      },
+      "srs-name": "900913"
+    },
+    {
+      "geometry": "polygon",
+      "name": "nature",
+      "id": "nature",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select * \nfrom osm_landusages\nwhere type in ('nature_reserve','park','wood','forest')\n) as nature",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "osm-africa",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "id": "nature",
+        "project": "albertine-rift",
+        "srs": null
+      }
+    },
+    {
+      "geometry": "linestring",
+      "Datasource": {
+        "type": "postgis",
+        "table": "region_lines",
+        "extent": "",
+        "key_field": "",
+        "geometry_field": "the_geom",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "dbname": "experiments",
+        "id": "rift",
+        "project": "albertine-rift",
+        "srs": null
+      },
+      "id": "rift",
+      "class": "",
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "name": "rift"
+    },
+    {
+      "geometry": "linestring",
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select *\nfrom region_lines\nwhere type = 'lake'\n) as data",
+        "extent": "",
+        "key_field": "",
+        "geometry_field": "the_geom",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "dbname": "experiments",
+        "id": "large_lakes",
+        "project": "albertine-rift",
+        "srs": null
+      },
+      "id": "large_lakes",
+      "class": "",
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "name": "large_lakes"
+    },
+    {
+      "geometry": "linestring",
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select *\nfrom region_lines\nwhere type = 'lake' AND\nzoomscale = 8\n) as data",
+        "extent": "",
+        "key_field": "",
+        "geometry_field": "the_geom",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "dbname": "experiments"
+      },
+      "id": "albert_large",
+      "class": "",
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "name": "albert_large"
+    },
+    {
+      "geometry": "point",
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select *\nfrom osm_places\nwhere type = 'country'\n) as country",
+        "extent": "",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "dbname": "osm-africa"
+      },
+      "id": "country_labels",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "name": "country_labels"
+    }
+  ],
+  "name": "Albertine Rift Zone",
+  "description": "Physical geography of the Great Rift Valley of Africa.",
+  "attribution": "OpenStreetMap, SRTM, NaturalEarth.",
+  "_basemap": "http://a.tiles.mapbox.com/v3/mapbox.mapbox-streets.jsonp"
+}
