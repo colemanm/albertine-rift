@@ -2,24 +2,25 @@
 
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title>Albertine Rift | Africa's Great Rift Valley | Coleman McCormick</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Albertine Rift | Africa's Great Rift Valley | Coleman McCormick</title>
   <meta name="description" content="maps from @colemanm"/>
+  <meta name="author" content="Coleman McCormick"/>
   <meta charset="utf-8">  
 
   <link rel="shortcut icon" href="images/favicon.ico"/>
   
   <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen, projection" />
+  <link href='js/wax/theme/controls.css' rel='stylesheet' type='text/css' />
   
   <script src='js/wax/ext/modestmaps.min.js' type='text/javascript'></script>
   <script src='js/wax/dist/wax.mm.js' type='text/javascript'></script>
-  <link href='js/wax/theme/controls.css' rel='stylesheet' type='text/css' />
   <script src='js/easey.js' type='text/javascript'></script>
+  <script src='js/mapping.js' type='text/javascript'></script>  
 
-  <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen, projection" />
-
+  <!-- google analytics -->
   <script type="text/javascript">
-
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-32705988-1']);
   _gaq.push(['_trackPageview']);
@@ -29,38 +30,116 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
   </script>
+
+  <!-- mapping and transitions -->
   <script type="text/javascript">
 
-  var mm = com.modestmaps;
+  var map;
+    var mm = com.modestmaps;
+    var minzoom = 6;
+    var maxzoom = 9;
 
-  wax.tilejson('http://a.tiles.mapbox.com/v3/colemanm.albertine-rift.jsonp',
-    function(tilejson) {
-      var m = new mm.Map('map',
-        new wax.mm.connector(tilejson));
-        m.setCenterZoom(new mm.Location(-3, 27), 7);
-        wax.mm.zoomer(m).appendTo(m.parent);
-    })
+    wax.tilejson('http://a.tiles.mapbox.com/v3/colemanm.albertine-rift.jsonp',
+      function(tilejson) {
+        map = new mm.Map('map',
+          new wax.mm.connector(tilejson));
+          map.setCenterZoom(new mm.Location(-3, 27), 7);
+          wax.mm.zoomer(map).appendTo(map.parent);
+          map.setZoomRange(tilejson.minzoom, tilejson.maxzoom);
+
+          document.getElementById('home').onclick = function() {
+            easey().map(map).to(map.locationCoordinate({ lat: -3, lon: 27 }).zoomTo(7)).optimal().run();
+          };
+          document.getElementById('tanganyika').onclick = function() {
+            easey().map(map).to(map.locationCoordinate({ lat: -7.553, lon: 29.899 }).zoomTo(9)).optimal().run();
+          };
+          document.getElementById('albert').onclick = function() {
+            easey().map(map).to(map.locationCoordinate({ lat: 1.771, lon: 30.506 }).zoomTo(9)).optimal().run();
+          };
+          document.getElementById('victoria').onclick = function() {
+            easey().map(map).to(map.locationCoordinate({ lat: -1.02, lon: 32.16}).zoomTo(8)).optimal().run();
+          };
+          document.getElementById('malawi').onclick = function() {
+            easey().map(map).to(map.locationCoordinate({ lat: -11.31, lon: 33.62}).zoomTo(9)).optimal().run();
+          };
+          document.getElementById('albertinerift').onclick = function() {
+            easey().map(map).to(map.locationCoordinate({ lat: -0.511, lon: 28.757}).zoomTo(9)).optimal().run();
+          };
+          document.getElementById('congo').onclick = function() {
+            easey().map(map).to(map.locationCoordinate({ lat: 1.3, lon: 20.110}).zoomTo(9)).optimal().run();
+          };
+          document.getElementById('elgon').onclick = function() {
+            easey().map(map).to(map.locationCoordinate({ lat: 1.11, lon: 34.30}).zoomTo(9)).optimal().run();
+          };
+          document.getElementById('kilimanjaro').onclick = function() {
+            easey().map(map).to(map.locationCoordinate({ lat: -3.053, lon: 37.082}).zoomTo(9)).optimal().run();
+          }
+      });
 
   </script>
 
 </head>
   
 <body>
+<!-- facebook -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
   <div id="container">
     <div id="map"></div>
-    <div class="sidebar">
-      <h1>The Albertine Rift</h1>
-      <div class="about">
-        <h2>Sources</h2>
-        <p>Streets and places from <a href="http://openstreetmap.org">OpenStreetMap</a>.</p>
-        <p>The hillshading and color relief were generated from <a href="http://www2.jpl.nasa.gov/srtm/">SRTM</a> data as two separate layers, using <code>gdaldem</code>.</p>
-      </div>
-    </div>
 
-    
+    <div class="sidebar">
+
+      <h1>The Albertine Rift</h1>
+      <p>The <a href="http://en.wikipedia.org/wiki/Albertine_Rift">Albertine Rift</a> valley is the western arm of Africa's Great Rift Valley. It forms a divergent faultline between two tectonic plates on the continent, resulting in an interesting combination of ecosystems &mdash; montane forests, mountains, and the deep <a href="http://en.wikipedia.org/wiki/Rift_Valley_lakes">rift valley lakes</a>.</p>
+
+      <h2>See a place in detail:</h2>
+      <p class="small" id="home">return</p>
+      <table class="places" cellspacing="0">
+        <tr>
+          <td><a href="#" id="tanganyika">Lake Tanganyika</a></td>
+          <td><a href="#" id="albert">Lake Albert</a></td>
+        </tr>
+        <tr>
+          <td><a href="#" id="victoria">Lake Victoria</a></td>
+          <td><a href="#" id="malawi">Lake Malawi</a></td>
+        </tr>
+        <tr>
+          <td><a href="#" id="albertinerift">Albertine Rift</a></td>
+          <td><a href="#" id="congo">Congo River Basin</a></td>
+        </tr>
+        <tr>
+          <td><a href="#" id="elgon">Mount Elgon</a></td>
+          <td><a href="#" id="kilimanjaro">Mount Kilimanjaro</a></td>
+        </tr>
+      </table>
+
+      <div class="about">
+        <h2>About the Map</h2>
+        <p>This map is the product of some inspiration from a <a href="http://ngm.nationalgeographic.com/2011/11/albertine-rift/draper-text">2011 article</a> in National Geographic magazine, and a weekend of tinkering with some data and cartography in <a href="http://mapbox.com/tilemill">TileMill</a>. The map is hosted on <a href="http://mapbox.com">MapBox</a> and the site is built with <a href="http://pages.github.com/">GitHub Pages</a>, <a href="http://mapbox.com/easey/">easey</a>, and good old HTML.</p>
+        <h2>Data</h2>
+        <p>Streets and place names are from <a href="http://openstreetmap.org">OpenStreetMap</a>.</p>
+        <p>Rivers, streams, lakes, and borders from <a href="http://naturalearthdata.com">Natural Earth</a> &amp; OpenStreetMap.</p>
+        <p>Volcano data from the Smithsonian <a href="http://www.volcano.si.edu/index.cfm">Global Volcanism Program</a>.</p>
+        <p>The hillshading and color relief were generated from <a href="http://www2.jpl.nasa.gov/srtm/">SRTM</a> data as two separate layers, using GDAL tools.</p>
+      </div>
+    </div>    
+
+    <div class="author">
+      <div class="share">
+        <div class="fb-like" data-href="http://colemanm.org/albertine-rift" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" data-font="arial"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="colemanm">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      </div>
+      <p>Made by <a href="http://colemanm.org/">Coleman McCormick</a>. 2012.</p>
+    </div>
 
   </div>
 

@@ -7,8 +7,34 @@ body {
 code {
 	background-color: #ddd;
 }
+h2 {
+	margin: 10px 0 5px 0;
+	padding: 0;
+}
+p {
+	padding: 0;
+	margin: 5px 0;
+}
+a:link, a:visited {
+	color: #1E6676;
+}
+a:hover {
+	color: #14434D;
+}
 
 #container {
+}
+
+p.small {
+	font-size: 0.7em;
+	font-style: italic;
+}
+
+table.places {
+	font-size: 0.85em;
+}
+table.places td {
+	padding-right: 5px;
 }
 
 .sidebar {
@@ -20,6 +46,7 @@ code {
 	bottom: 0;
 	padding: 15px;
 	border-right: 4px solid #ddd;
+	overflow: hidden;
 }
 .sidebar h1 {
 	font-size: 1.4em;
@@ -37,3 +64,16 @@ code {
 	width: 100%;
 	z-index: -1;
 }
+
+.author {
+	position: absolute;
+	font-size: 0.9em;
+	padding: 15px;
+	bottom: 0;
+}
+
+.about {
+	font-size: 0.8em;
+}
+
+.hide { display: none; }
