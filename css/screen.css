@@ -76,6 +76,11 @@ table.places td {
 	font-size: 0.8em;
 }
 
+.share td {
+	padding: 0;
+	margin: 0;
+}
+
 .fb-like, .tweet {
 	display: inline;
 }
