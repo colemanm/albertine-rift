@@ -4,7 +4,7 @@ A microsite to present [Albertine Rift](http://colemanm.org/albertine-rift), a m
 
 The site uses HTML, GitHub Pages, easey, and is hosted on MapBox.
 
-I've also posted the messy, hacky [carto design files](), so you can see all the manual labeling and tweaking. A lot of the data was in PostGIS tables, some from shapefiles, and some custom generated GeoTIFFs from the raw SRTM DEMs. I also used the font [Alegreya](http://www.google.com/webfonts/specimen/Alegreya), which you can get for free.
+I've also posted the messy, hacky [carto design files](https://github.com/colemanm/albertine-rift/tree/master/carto), so you can see all the manual labeling and tweaking. A lot of the data was in PostGIS tables, some from shapefiles, and some custom generated GeoTIFFs from the raw SRTM DEMs. I also used the font [Alegreya](http://www.google.com/webfonts/specimen/Alegreya), which you can get for free.
 
 ## Data Sources
 
